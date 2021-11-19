@@ -1,13 +1,24 @@
-import Home from 'templates/Home'
+import Home, { HomeTemplateProps } from 'templates/Home'
+import bannersMock from 'components/BannerSlider/mock'
+import gamesMock from 'components/GameCardSlider/mock'
+import hightligthMock from 'components/Highlight/mock'
 
-export default function Index(props: any) {
+export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
 }
 
 export function getServerSideProps() {
   return {
     props: {
-      heading: 'Hello World!'
+      banners: bannersMock,
+      newGames: gamesMock,
+      mostPopularHighlight: hightligthMock,
+      mostPopularGames: gamesMock,
+      upcommingGames: gamesMock,
+      upcommingHighligth: hightligthMock,
+      upcommingMoreGames: gamesMock,
+      freeGames: gamesMock,
+      freeHighlight: hightligthMock
     }
   }
 }
