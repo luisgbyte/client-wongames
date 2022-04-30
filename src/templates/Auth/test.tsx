@@ -1,19 +1,38 @@
-import { render } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from 'utils/tests/helpers'
 
 import Auth from '.'
 
 describe('<Auth />', () => {
   it('should render all components and children', () => {
-    render(
+    renderWithTheme(
       <Auth title="Auth Title">
         <input type="text" />
       </Auth>
-
-      //verificar se tem duas logos
-      // verficar se tem heading principal do banner
-      // verificar se tem subtitle
-      // verificar se tem o title do content
-      // verificar se o children está sendo renderizado
     )
+    //verificar se tem duas logos
+    expect(screen.getAllByRole('img', { name: /won games/i })).toHaveLength(2)
+
+    // verificar se tem heading principal do banner
+    expect(
+      screen.getByRole('heading', {
+        name: /All your favorite games in one place/i
+      })
+    ).toBeInTheDocument()
+
+    // verificar se tem subtitle
+    expect(
+      screen.getByRole('heading', {
+        name: /won is the best and most complete gaming platform/i
+      })
+    ).toBeInTheDocument()
+
+    // verificar se tem o title do content
+    expect(
+      screen.getByRole('heading', { name: /auth title/i })
+    ).toBeInTheDocument()
+
+    // verificar se o children está sendo renderizado
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 })
