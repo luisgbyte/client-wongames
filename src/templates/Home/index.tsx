@@ -65,19 +65,15 @@ const Home = ({
         <Heading lineLeft lineColor="secondary">
           Upcomming
         </Heading>
-
         <GameCardSlider items={upcommingGames} />
         <Highlight {...upcommingHighligth} />
         <GameCardSlider items={upcommingMoreGames} />
       </S.SectionUpcoming>
-    </Container>
 
-    <Container>
       <S.SectionFreeGames>
         <Heading lineLeft lineColor="secondary">
           Free Games
         </Heading>
-
         <Highlight {...freeHighlight} />
         <GameCardSlider items={freeGames} />
       </S.SectionFreeGames>
