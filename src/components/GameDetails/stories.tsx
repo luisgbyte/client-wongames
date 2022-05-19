@@ -9,11 +9,12 @@ export default {
     backgrounds: {
       default: 'won-dark'
     }
-  }
+  },
+  args: {}
 } as Meta
 
 export const Basic: Story = () => (
   <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
-    <GameDetails />
+    <GameDetails platforms={['windows', 'linux', 'mac']} />
   </div>
 )
