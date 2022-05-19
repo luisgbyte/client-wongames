@@ -1,4 +1,4 @@
-import GameDetails from '.'
+import GameDetails, { GameDetailsProps } from '.'
 
 import { Story, Meta } from '@storybook/react'
 
@@ -10,11 +10,21 @@ export default {
       default: 'won-dark'
     }
   },
-  args: {}
+  args: {
+    platforms: ['windows', 'linux', 'mac']
+  },
+  argTypes: {
+    platforms: {
+      control: {
+        type: 'inline-check',
+        options: ['windows', 'linux', 'mac']
+      }
+    }
+  }
 } as Meta
 
-export const Basic: Story = () => (
+export const Basic: Story<GameDetailsProps> = (args) => (
   <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
-    <GameDetails platforms={['windows', 'linux', 'mac']} />
+    <GameDetails {...args} />
   </div>
 )
