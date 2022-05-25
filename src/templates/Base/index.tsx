@@ -9,7 +9,7 @@ export type BaseTemplateProps = {
 }
 
 const Base = ({ children }: BaseTemplateProps) => (
-  <section>
+  <S.Wrapper>
     <Container>
       <Menu />
     </Container>
@@ -17,7 +17,7 @@ const Base = ({ children }: BaseTemplateProps) => (
     <S.SectionFooter>
       <Footer />
     </S.SectionFooter>
-  </section>
+  </S.Wrapper>
 )
 
 export default Base
