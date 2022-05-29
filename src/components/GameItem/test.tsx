@@ -1,4 +1,4 @@
-// import { screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import GameItem from '.'
@@ -13,8 +13,12 @@ describe('<GameItem />', () => {
   it('should render the item', () => {
     renderWithTheme(<GameItem {...props} />)
 
-    // verificar o title
-    // verificar a imagem
-    // verificar o preço
+    expect(
+      screen.getByRole('heading', { name: props.title })
+    ).toBeInTheDocument()
+
+    expect(screen.getByRole('img', { name: props.title })).toBeInTheDocument()
+
+    expect(screen.getByText('R$ 215,00')).toBeInTheDocument()
   })
 })
