@@ -2,13 +2,14 @@ import { Container } from 'components/Container'
 import { Divider } from 'components/Divider'
 import { GameCardProps } from 'components/GameCard'
 import { HighlightProps } from 'components/Highlight'
-import CardList, { CartListProps } from 'components/CardList'
+import CardList, { CartListProps } from 'components/CartList'
 import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions'
 import Heading from 'components/Heading'
 import Showcase from 'components/Showcase'
 import Base from 'templates/Base'
 
 import * as S from './styles'
+import Empty from 'components/Empty'
 
 export type CartProps = {
   recommendedGames: GameCardProps[]
@@ -31,12 +32,19 @@ const Cart = ({
         <Heading lineLeft lineColor="secondary">
           My cart
         </Heading>
+        {items.length ? (
+          <S.Content>
+            <CardList items={items} total={total} />
 
-        <S.Content>
-          <CardList items={items} total={total} />
-
-          <PaymentOptions cards={cards} handlePayment={handlePayment} />
-        </S.Content>
+            <PaymentOptions cards={cards} handlePayment={handlePayment} />
+          </S.Content>
+        ) : (
+          <Empty
+            title="Your cart is empty"
+            description="Go back to the store and explore great games and offers"
+            hasLink
+          />
+        )}
         <Divider />
       </Container>
       <Showcase
