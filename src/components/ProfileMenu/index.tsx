@@ -20,7 +20,7 @@ const ProfileMenu = () => (
     <Link href="/profile/cards" passHref>
       <S.Link>
         <CreditCard size={24} />
-        <span>My profile</span>
+        <span>My cards</span>
       </S.Link>
     </Link>
 
