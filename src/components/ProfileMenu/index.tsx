@@ -15,7 +15,7 @@ export type ProfileMenuProps = {
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
   <S.Nav>
     <Link href="/profile/me" passHref>
-      <S.Link isActive={activeLink === '/prifile/me'} title="My Profile">
+      <S.Link isActive={activeLink === '/profile/me'} title="My Profile">
         <AccountCircle size={24} />
         <span>My profile</span>
       </S.Link>
