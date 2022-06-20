@@ -32,7 +32,7 @@ const Cart = ({
         <Heading lineLeft lineColor="secondary">
           My cart
         </Heading>
-        {items.length ? (
+        {items?.length ? (
           <S.Content>
             <CardList items={items} total={total} />
 
