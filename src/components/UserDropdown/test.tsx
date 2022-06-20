@@ -1,13 +1,27 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { renderWithTheme } from 'utils/tests/helpers'
 
 import UserDropdown from '.'
 
 describe('<UserDropdown />', () => {
-  it('should render the heading', () => {
-    const { container } = render(<UserDropdown />)
+  it('should render the username', () => {
+    renderWithTheme(<UserDropdown username="Luis" />)
 
-    expect(screen.getByRole('heading', { name: /UserDropdown/i })).toBeInTheDocument()
+    expect(screen.getByText(/luis/i)).toBeInTheDocument()
+  })
 
-    expect(container.firstChild).toMatchSnapshot()
+  it('should render the menu', () => {
+    renderWithTheme(<UserDropdown username="Luis" />)
+
+    // open menu
+    userEvent.click(screen.getByText(/luis/i))
+
+    expect(
+      screen.getByRole('link', { name: /my profile/i })
+    ).toBeInTheDocument()
+
+    expect(screen.getByRole('link', { name: /wishlist/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /sign out/i })).toBeInTheDocument()
   })
 })
